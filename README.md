@@ -118,10 +118,15 @@
 
 ---
 
-## 📞 الدعم الفني وحقوق النشر (Support & Copyright)
+## 📞 Support & Copyright
 
-- **المطور:** حكيم بوزورداز (Hakim BOUZOURDAZ)
-- **حقوق النشر:** © 2026 جميع الحقوق محفوظة للمطور.
+Developed and Designed for **Hakim BOUZOURDAZ**.
+
+- **Portfolio:** [hbouzourdaz.space](https://hbouzourdaz.space)
+- **Email:** [hbouzourdaz@gmail.com](mailto:hbouzourdaz@gmail.com)
+- **GitHub:** [@hbouzourdaz](https://github.com/hbouzourdaz)
+
+All Rights Reserved.
 - يمنع التعديل على ملفات البرامج أو إعادة بيعها دون إذن مسبق.
 
 *نشكرك على ثقتك في منظومة برامج حكيم. نتمنى لك تجربة استخدام ممتعة ومفيدة!*
