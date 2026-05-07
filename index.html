@@ -193,9 +193,9 @@
 
         /* ===== M3 FILTER CHIPS (TABS) inside Sticky Header ===== */
         .chip-group-container {
-            padding: 0 16px 12px 16px;
+            padding: 0 0 12px 0;
             display: flex;
-            justify-content: center;
+            width: 100%;
         }
         .chip-group {
             display: flex;
@@ -204,11 +204,15 @@
             scrollbar-width: none;
             max-width: 1200px;
             width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+            scroll-behavior: smooth;
         }
         .chip-group::-webkit-scrollbar { display: none; }
 
         .filter-chip {
             display: flex;
+            flex-shrink: 0;
             align-items: center;
             gap: 8px;
             height: 36px;
@@ -763,20 +767,84 @@
             bottom: 50px;
         }
 
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
         @media(max-width: 768px) {
+            .top-app-bar { padding: 0 8px; }
+            .title-text { font-size: 16px; }
+            
+            .hero-section {
+                padding: 24px 16px 32px 16px;
+                border-radius: 24px;
+                margin-bottom: 24px;
+            }
+            .hero-title { font-size: 26px; }
+            .hero-subtitle { font-size: 14px; margin-bottom: 24px; }
+            .hero-search-bar {
+                height: 50px;
+                padding: 0 16px;
+            }
+            
+            .grid-layout, .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .m3-card {
+                padding: 12px;
+                gap: 12px;
+            }
+            .card-thumbnail {
+                width: 60px;
+                height: 60px;
+                border-radius: 14px;
+                padding: 10px;
+            }
+            .card-title { font-size: 15px; }
+            .list-layout .card-content { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .list-layout .card-subtitle { display: flex; font-size: 12px; }
+            
             .detail-header-surface {
                 flex-direction: column;
                 text-align: center;
                 align-items: center;
-                padding: 32px 20px;
+                padding: 24px 16px;
+                gap: 20px;
+                border-radius: 24px;
             }
+            .detail-icon-large {
+                width: 100px;
+                height: 100px;
+                border-radius: 24px;
+                padding: 16px;
+            }
+            .detail-title-text { font-size: 24px; }
             .detail-stats-row {
                 justify-content: center;
+                gap: 16px;
+                margin-bottom: 24px;
             }
-            .hero-title { font-size: 32px; }
-            .hero-subtitle { font-size: 16px; }
-            .list-layout .card-content { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .list-layout .card-subtitle { display: none; }
+            .stat-icon { width: 36px; height: 36px; border-radius: 10px; }
+            .stat-icon .material-symbols-rounded { font-size: 20px; }
+            .stat-val { font-size: 15px; }
+            .stat-lbl { font-size: 12px; }
+            
+            .m3-fab-extended {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .m3-surface-card {
+                padding: 20px 16px;
+                border-radius: 20px;
+            }
+            .m3-features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -887,7 +955,7 @@
                 </div>
             </div>
 
-            <div class="grid-layout" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px;">
+            <div class="detail-grid">
                 <div class="m3-surface-card">
                     <h2 class="m3-headline">
                         <span class="material-symbols-rounded" style="color:var(--md-sys-color-primary)">info</span> 
