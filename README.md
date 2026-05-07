@@ -1,7 +1,5 @@
 # Hakim Ecosystem - مكتبة برامج حكيم 🚀
 
-![Ecosystem Banner](my%20principal%20website/og-image.png)
-
 Welcome to the **Hakim Ecosystem**, a professional software distribution platform designed to showcase and provide easy access to a suite of educational and administrative tools developed by **Hakim Bouzourdaz**.
 
 ## 🌐 Project Overview
@@ -13,7 +11,6 @@ This project is a modern, responsive, and bilingual (Arabic/English/French/Kabyl
 
 ## 🖋️ Design & Typography
 The ecosystem uses a premium aesthetic with **Olive Green** tonal palettes. 
-- **Default Font:** [Baloo Bhaijaan 2](https://fonts.google.com/specimen/Baloo+Bhaijaan+2) is used as the primary font for its professional and elegant look in both Arabic and Latin scripts.
 
 ## 📦 Software Catalog
 
