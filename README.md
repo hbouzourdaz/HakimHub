@@ -1,132 +1,53 @@
-# دليل برامج منظومة حكيم (Hakim Ecosystem Software Guide)
+# Hakim Ecosystem - مكتبة برامج حكيم 🚀
 
-مرحباً بك في الدليل الشامل لبرامج **منظومة حكيم التعليمية والإدارية**.
-تم تطوير جميع هذه البرامج بواسطة **حكيم بوزورداز (Hakim BOUZOURDAZ)** لتسهيل عمل الأساتذة، الإداريين، والمهتمين بالشأن التربوي في الجزائر.
+![Ecosystem Banner](my%20principal%20website/og-image.png)
 
----
+Welcome to the **Hakim Ecosystem**, a professional software distribution platform designed to showcase and provide easy access to a suite of educational and administrative tools developed by **Hakim Bouzourdaz**.
 
-## 📚 1. برامج الطور المتوسط (Middle School)
+## 🌐 Project Overview
+This project is a modern, responsive, and bilingual (Arabic/English/French/Kabyle) web application built with **Material Design 3** principles. It serves as a central hub for all software projects, featuring:
+- **Responsive Web Dashboard** (Single Page Application)
+- **Mobile Emulator Interface** (Android-style view)
+- **Bilingual CV Integration**
+- **Dynamic Download Management** with a 7-second waiting period and progress bar.
 
-### 📊 نتـائج متـوسـط (DzCEM Results)
+## 🖋️ Design & Typography
+The ecosystem uses a premium aesthetic with **Olive Green** tonal palettes. 
+- **Default Font:** [Baloo Bhaijaan 2](https://fonts.google.com/specimen/Baloo+Bhaijaan+2) is used as the primary font for its professional and elegant look in both Arabic and Latin scripts.
 
-- **الوصف:** برنامج متكامل لإدارة وعرض نتائج التلاميذ في الطور المتوسط مع استخراج تقارير مفصلة وإحصائيات دقيقة.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** إنشاء تقارير مفصلة لكل قسم، إحصائيات نسب النجاح، واجهة سهلة.
+## 📦 Software Catalog
 
-### 🧮 حاسبـة المعـدلات (DzCEM Calculator)
+Here is a list of the key software programs available in this ecosystem:
 
-- **الوصف:** أداة دقيقة وسريعة لحساب المعدلات الفصلية والسنوية وفق المنهاج الجزائري الحديث.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** نتائج فورية، حساب آلي ودقيق، متوافق مع معاملات المواد الجديدة.
+| ID | Software Name | Arabic Name | Category | Version | Download Link |
+|:---|:---|:---|:---|:---|:---|
+| 1 | DzCEM Results | نتائج متوسط DzCEM | Middle School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzCEM.Results.Setup.1.0.0.exe) |
+| 2 | DzCEM Calculator | حاسبة المعدلات DzCEM | Middle School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzCEM.Calculator.Setup.1.0.0.exe) |
+| 3 | DzExam Generator | مولد الامتحانات DzExam | Middle School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzExam.Generator.Setup.1.0.0.exe) |
+| 4 | DzFET Print | طباعة جداول التوقيت DzFET | Administration | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzFET.Print.Setup.1.0.0.exe) |
+| 5 | DzSahel Admin | تسهيل الإدارة DzSahel | Administration | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzSahel.Admin.Setup.1.0.0.exe) |
+| 6 | DzTutor Physics | معلم الفيزياء DzTutor | Middle School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/DzTutor.Physics.Setup.1.0.0.exe) |
+| 7 | Nojoom DZ | نجوم الجزائر | Primary School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/Nojoom.DZ.Setup.1.0.0.exe) |
+| 8 | Quran App | تطبيق القرآن الكريم | General | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/Quran.App.Setup.1.0.0.exe) |
+| 9 | AIO Software Installer | مثبت البرامج الشامل | Tools | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/AIO.Software.Installer.Setup.1.0.0.exe) |
+| 10 | Attendance Setup | نظام الحضور والغياب | Administration | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/Attendance_Setup.exe) |
+| 11 | Office Unlocker | فتح ملفات الأوفيس | Tools | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/Office_Unlocker_Offline_Setup.exe) |
+| 12 | Web2App Converter | محول المواقع إلى تطبيقات | Tools | Free | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/Web2App_Converter_Free_Setup.exe) |
+| 13 | Marks Notes Adder | برنامج إدراج الملاحظات | Administration | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/NotePRI.Setup.1.0.0.exe) |
+| 14 | Primary Marks Entry | حجز النقاط - ابتدائي | Primary School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/HajzPRI.exe) |
+| 15 | Middle Marks Entry | حجز النقاط - متوسط | Middle School | 1.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/HajzCEM.exe) |
+| 16 | Middle Marks (Enhanced) | حجز النقاط - النسخة المحسنة | Middle School | 2.0.0 | [Download](https://github.com/hbouzourdaz/HakimHub/releases/download/1.0.0/HajzCEM.Enhanced.Version.exe) |
 
-### 📝 مولـد الامتحـانات (DzExam Generator)
+## 🛠️ Technology Stack
+- **Frontend:** HTML5, Vanilla JavaScript, Tailwind CSS v4.
+- **Iconography:** Material Symbols Rounded.
+- **Deployment:** GitHub Pages / Static Hosting.
 
-- **الوصف:** أداة ذكية لمساعدة الأساتذة في توليد وبناء أسئلة الامتحانات والاختبارات بشكل آلي ومنظم.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** تخصيص الأسئلة، تصدير الامتحانات جاهزة للطباعة بجودة عالية.
+## 👨‍💻 About the Developer
+**Hakim Bouzourdaz**
+*Physics Teacher, Radiation Researcher & Software Developer.*
+- Portfolio: [hbouzourdaz.space](https://hbouzourdaz.space)
+- GitHub: [@hbouzourdaz](https://github.com/hbouzourdaz)
 
-### ⚛️ معلـم الفيزيـاء (DzTutor Physics)
-
-- **الوصف:** مساعد تعليمي تفاعلي ذكي لمادة الفيزياء لتلاميذ الطور المتوسط.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** شروحات تفاعلية للدروس، تمارين محلولة ومبسطة.
-
-### 🏫 حجز النقاط - الطور المتوسط
-
-- **الوصف:** برنامج مخصص لحجز وتسجيل نقاط التلاميذ بشكل آمن ومنظم (يتوفر بنسخة عادية ونسخة محسّنة 2.0.0).
-- **أهم المميزات:** تصدير كشوف النقاط، متابعة دقيقة للمسار الدراسي.
-
----
-
-## 🎒 2. برامج الطور الابتدائي (Primary School)
-
-### ⭐ نجوم الجزائر (Nojoom DZ)
-
-- **الوصف:** برنامج تعليمي تفاعلي ترفيهي مخصص لتلاميذ الطور الابتدائي، يجعل من التعلم تجربة ممتعة.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** أنشطة تفاعلية متنوعة، واجهة ملونة ومناسبة للأطفال، تعليم باللعب.
-
-### 📝 حجز النقاط - ابتدائي (Primary Marks Entry)
-
-- **الوصف:** نظام مبسط لحجز وتخزين نقاط تلاميذ المرحلة الابتدائية وإصدار الكشوف الخاصة بهم.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** سرعة في الحجز، نظام ألوان تنبيهي للمعدلات.
-
----
-
-## 💼 3. برامج الإدارة والتسيير (Administration)
-
-### 🖨️ طباعة جداول التوقيت (DzFET Print)
-
-- **الوصف:** الأداة الأفضل لطباعة وتنسيق جداول التوقيت المدرسية (للأساتذة والأقسام) المستخرجة من برنامج FET.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** تنسيق احترافي، ألوان مميزة للغات والتفويج، دعم التصدير لـ PDF.
-
-### 🏢 تسهيل الإدارة (DzSahel Admin)
-
-- **الوصف:** نظام إداري شامل لتسهيل تسيير شؤون الموظفين، الملفات، والمراسلات الإدارية في المؤسسات التربوية.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** أرشفة رقمية، تقارير إدارية آلية، واجهة احترافية.
-
-### ⏱️ نظام الحضور والغياب (Attendance Setup)
-
-- **الوصف:** نظام متكامل لتسجيل ومتابعة حضور وغياب التلاميذ بشكل يومي مع إحصائيات دقيقة.
-- **النسخة:** 1.0.0
-- **أهم المميزات:** كشف الغيابات الشهري، إنذارات الغياب الآلية.
-
-### ✍️ برنامج إدراج الملاحظات (Marks Notes Adder)
-
-- **الوصف:** برنامج متخصص يسهل على الأساتذة والإداريين إدراج الملاحظات التربوية آلياً على كشوف النقاط.
-- **النسخة:** 1.0.0
-
----
-
-## 🛠️ 4. أدوات وبرامج عامة (Tools & General)
-
-### 📖 تطبيق القرآن الكريم (Quran App)
-
-- **الوصف:** تطبيق شامل للقرآن الكريم يوفر واجهة عصرية ومريحة للعين للقراءة والتلاوة والبحث في الآيات.
-- **النسخة:** 1.0.0
-
-### 🚀 مثبت البرامج الشامل (AIO Software Installer)
-
-- **الوصف:** أداة قوية لتثبيت مجموعة من البرامج الأساسية للكمبيوتر دفعة واحدة وبضغطة زر (تثبيت صامت).
-- **النسخة:** 1.0.0
-- **أهم المميزات:** توفير كبير للوقت والجهد بعد تهيئة (فورمات) الحواسيب.
-
-### 🔓 فتح ملفات الأوفيس (Office Unlocker)
-
-- **الوصف:** أداة سريعة تعمل بدون إنترنت لفتح وإلغاء الحماية عن ملفات الوورد والإكسل (Word & Excel) المقفلة.
-- **النسخة:** 1.0.0
-
-### 🌐 محول المواقع (Web2App Converter)
-
-- **الوصف:** برنامج رائد لتحويل أي موقع ويب إلى تطبيق سطح مكتب (Desktop App) مستقل خلال ثوانٍ.
-- **النسخة:** Free Version
-
----
-
-## 💻 تعليمات التثبيت والاستخدام (Installation Guide)
-
-1. قم بتحميل ملف البرنامج المعني بصيغة (`.exe` أو `.zip`).
-2. إذا كان الملف بصيغة `.zip`، قم بفك الضغط عنه باستخدام برنامج (WinRAR) أو (7-Zip).
-3. انقر مرتين على ملف التثبيت المرفق (`Setup.exe`).
-4. اتبع خطوات التثبيت البسيطة (التالي -> التالي -> إنهاء).
-5. ستجد اختصار البرنامج (Shortcut) على سطح المكتب وجاهزاً للعمل!
-
-> **ملاحظة:** جميع البرامج مصممة لتعمل بسلاسة على أنظمة ويندوز (Windows 10 و Windows 11).
-
----
-
-## 📞 Support & Copyright
-
-Developed and Designed for **Hakim BOUZOURDAZ**.
-
-- **Portfolio:** [hbouzourdaz.space](https://hbouzourdaz.space)
-- **Email:** [hbouzourdaz@gmail.com](mailto:hbouzourdaz@gmail.com)
-- **GitHub:** [@hbouzourdaz](https://github.com/hbouzourdaz)
-
-All Rights Reserved.
-- يمنع التعديل على ملفات البرامج أو إعادة بيعها دون إذن مسبق.
-
-*نشكرك على ثقتك في منظومة برامج حكيم. نتمنى لك تجربة استخدام ممتعة ومفيدة!*
+## 📄 License
+© 2026 Hakim Ecosystem - All Rights Reserved.
