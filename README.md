@@ -1,98 +1,127 @@
-# Hakim Ecosystem (مكتبة برامج حكيم)
+# دليل برامج منظومة حكيم (Hakim Ecosystem Software Guide)
 
-![Hakim Ecosystem](https://img.shields.io/badge/Status-Production_Ready-success) ![License](https://img.shields.io/badge/License-Proprietary-blue) ![Design](https://img.shields.io/badge/UI-Material_Design_3-orange)
-
-**Hakim Ecosystem** is a modern, high-performance, and responsive Single Page Application (SPA) built to showcase a professional suite of educational and administrative software developed by **Hakim BOUZOURDAZ**. 
-
-The interface is heavily inspired by Google's **Material Design 3 (M3)** guidelines, offering a premium "SaaS" aesthetic, smooth micro-animations, and dynamic content rendering without the need for complex frontend frameworks.
+مرحباً بك في الدليل الشامل لبرامج **منظومة حكيم التعليمية والإدارية**.
+تم تطوير جميع هذه البرامج بواسطة **حكيم بوزورداز (Hakim BOUZOURDAZ)** لتسهيل عمل الأساتذة، الإداريين، والمهتمين بالشأن التربوي في الجزائر.
 
 ---
 
-## ✨ Key Features
+## 📚 1. برامج الطور المتوسط (Middle School)
 
-- **Google Material Design 3 UI:** Utilizes M3 tonal color palettes, outlined cards with ripple effects, rounded filter chips, dynamic search bars, and the official Google Material Symbols Rounded library.
-- **Fully Bilingual (Arabic / English):** Complete localization support with dynamic RTL (Right-to-Left) and LTR (Left-to-Right) switching depending on the selected language.
-- **Dynamic Database (`data.js`):** All 16 software programs are injected dynamically from a centralized JSON-like array, making updates, additions, and deletions effortless.
-- **Dark / Light Mode:** A fully integrated theme switcher that dynamically adjusts surface colors, container elevations, and typography contrasts to reduce eye strain.
-- **Smart Filtering & Live Search:** Instantly filter software by categories (e.g., Middle School, Primary, Administration) or use the live search bar to find programs by name or description.
-- **Interactive Detail Views:** Each software has its own dedicated view containing technical specifications, version details, feature lists, file sizes, and direct download links.
-- **Fallback Asset Handling:** Intelligently displays colorful, premium-looking placeholder icons featuring M3 symbols and gradients if an app lacks a custom image asset.
+### 📊 نتـائج متـوسـط (DzCEM Results)
 
----
+- **الوصف:** برنامج متكامل لإدارة وعرض نتائج التلاميذ في الطور المتوسط مع استخراج تقارير مفصلة وإحصائيات دقيقة.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** إنشاء تقارير مفصلة لكل قسم، إحصائيات نسب النجاح، واجهة سهلة.
 
-## 🛠 Technologies Used
+### 🧮 حاسبـة المعـدلات (DzCEM Calculator)
 
-- **HTML5:** Semantic HTML structuring the Single Page Application.
-- **Vanilla JavaScript (ES6+):** Handling DOM manipulation, state management (views/languages), search algorithms, and category filtering logic. No external JS libraries/frameworks were used.
-- **Vanilla CSS3:** Advanced usage of CSS Custom Properties (Variables) for theming, CSS Grid & Flexbox for responsive layouts, and keyframe animations for smooth page transitions.
-- **Typography:** The highly legible **Rubik** font family from Google Fonts.
-- **Iconography:** Official **Google Material Symbols Rounded**.
+- **الوصف:** أداة دقيقة وسريعة لحساب المعدلات الفصلية والسنوية وفق المنهاج الجزائري الحديث.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** نتائج فورية، حساب آلي ودقيق، متوافق مع معاملات المواد الجديدة.
 
----
+### 📝 مولـد الامتحـانات (DzExam Generator)
 
-## 📂 File Structure
+- **الوصف:** أداة ذكية لمساعدة الأساتذة في توليد وبناء أسئلة الامتحانات والاختبارات بشكل آلي ومنظم.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** تخصيص الأسئلة، تصدير الامتحانات جاهزة للطباعة بجودة عالية.
 
-```text
-Hakim_Ecosystem/
-│
-├── index.html       # The core SPA interface containing layout, styling, and UI logic.
-├── data.js          # The localized data source containing all software metadata.
-├── README.md        # This documentation file.
-│
-└── ../images/       # External directory containing application icons (.png, .ico).
-                     # (Ensures assets are shared centrally with other deployment tools).
-```
+### ⚛️ معلـم الفيزيـاء (DzTutor Physics)
+
+- **الوصف:** مساعد تعليمي تفاعلي ذكي لمادة الفيزياء لتلاميذ الطور المتوسط.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** شروحات تفاعلية للدروس، تمارين محلولة ومبسطة.
+
+### 🏫 حجز النقاط - الطور المتوسط
+
+- **الوصف:** برنامج مخصص لحجز وتسجيل نقاط التلاميذ بشكل آمن ومنظم (يتوفر بنسخة عادية ونسخة محسّنة 2.0.0).
+- **أهم المميزات:** تصدير كشوف النقاط، متابعة دقيقة للمسار الدراسي.
 
 ---
 
-## 📝 How to Add or Edit Software
+## 🎒 2. برامج الطور الابتدائي (Primary School)
 
-To add a new program or edit an existing one, you only need to modify the `appsData` array inside the `data.js` file. The UI in `index.html` will automatically adapt and render the new content.
+### ⭐ نجوم الجزائر (Nojoom DZ)
 
-**Example `data.js` Object:**
+- **الوصف:** برنامج تعليمي تفاعلي ترفيهي مخصص لتلاميذ الطور الابتدائي، يجعل من التعلم تجربة ممتعة.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** أنشطة تفاعلية متنوعة، واجهة ملونة ومناسبة للأطفال، تعليم باللعب.
 
-```javascript
-{
-    id: 17, // Must be a unique number
-    name: "New Software App", // English Name
-    nameAr: "تطبيق جديد", // Arabic Name
-    category: "أدوات", // Arabic Category
-    categoryEn: "Tools", // English Category
-    icon: "../images/new_app_icon.png", // Path to icon (or "default" for fallback)
-    gradient: "linear-gradient(135deg, #3b82f6, #6366f1)", // UI accent background
-    color: "#3b82f6", // UI accent shadow color
-    version: "1.0.0", // Software version
-    size: "50.0 MB", // File size
-    fileName: "New_App_Setup.exe", // Exact filename for download link
-    description: "وصف البرنامج بالعربية.", // Arabic description
-    descriptionEn: "Software description in English.", // English description
-    features: ["ميزة 1", "ميزة 2"], // Arabic feature list
-    featuresEn: ["Feature 1", "Feature 2"], // English feature list
-    downloads: 1500 // Download count
-}
-```
+### 📝 حجز النقاط - ابتدائي (Primary Marks Entry)
 
-*Note: If `icon` is set to `"default"`, the system will automatically generate a beautiful gradient placeholder icon.*
+- **الوصف:** نظام مبسط لحجز وتخزين نقاط تلاميذ المرحلة الابتدائية وإصدار الكشوف الخاصة بهم.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** سرعة في الحجز، نظام ألوان تنبيهي للمعدلات.
 
 ---
 
-## 🚀 Running the Project Locally
+## 💼 3. برامج الإدارة والتسيير (Administration)
 
-Because this project is built with static files and uses modern JavaScript modules, you may need a local web server to avoid CORS (Cross-Origin Resource Sharing) issues when loading local files, though standard double-clicking `index.html` works in most modern browsers.
+### 🖨️ طباعة جداول التوقيت (DzFET Print)
 
-If needed, use Python's built-in HTTP server:
-```bash
-# Navigate to the project directory
-cd "Hakim_Ecosystem"
+- **الوصف:** الأداة الأفضل لطباعة وتنسيق جداول التوقيت المدرسية (للأساتذة والأقسام) المستخرجة من برنامج FET.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** تنسيق احترافي، ألوان مميزة للغات والتفويج، دعم التصدير لـ PDF.
 
-# Start a local server on port 8000
-python -m http.server 8000
-```
-Then, open `http://localhost:8000` in your web browser.
+### 🏢 تسهيل الإدارة (DzSahel Admin)
+
+- **الوصف:** نظام إداري شامل لتسهيل تسيير شؤون الموظفين، الملفات، والمراسلات الإدارية في المؤسسات التربوية.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** أرشفة رقمية، تقارير إدارية آلية، واجهة احترافية.
+
+### ⏱️ نظام الحضور والغياب (Attendance Setup)
+
+- **الوصف:** نظام متكامل لتسجيل ومتابعة حضور وغياب التلاميذ بشكل يومي مع إحصائيات دقيقة.
+- **النسخة:** 1.0.0
+- **أهم المميزات:** كشف الغيابات الشهري، إنذارات الغياب الآلية.
+
+### ✍️ برنامج إدراج الملاحظات (Marks Notes Adder)
+
+- **الوصف:** برنامج متخصص يسهل على الأساتذة والإداريين إدراج الملاحظات التربوية آلياً على كشوف النقاط.
+- **النسخة:** 1.0.0
 
 ---
 
-## © Copyright
+## 🛠️ 4. أدوات وبرامج عامة (Tools & General)
 
-Developed and Designed for **Hakim BOUZOURDAZ**.
-All Rights Reserved.
+### 📖 تطبيق القرآن الكريم (Quran App)
+
+- **الوصف:** تطبيق شامل للقرآن الكريم يوفر واجهة عصرية ومريحة للعين للقراءة والتلاوة والبحث في الآيات.
+- **النسخة:** 1.0.0
+
+### 🚀 مثبت البرامج الشامل (AIO Software Installer)
+
+- **الوصف:** أداة قوية لتثبيت مجموعة من البرامج الأساسية للكمبيوتر دفعة واحدة وبضغطة زر (تثبيت صامت).
+- **النسخة:** 1.0.0
+- **أهم المميزات:** توفير كبير للوقت والجهد بعد تهيئة (فورمات) الحواسيب.
+
+### 🔓 فتح ملفات الأوفيس (Office Unlocker)
+
+- **الوصف:** أداة سريعة تعمل بدون إنترنت لفتح وإلغاء الحماية عن ملفات الوورد والإكسل (Word & Excel) المقفلة.
+- **النسخة:** 1.0.0
+
+### 🌐 محول المواقع (Web2App Converter)
+
+- **الوصف:** برنامج رائد لتحويل أي موقع ويب إلى تطبيق سطح مكتب (Desktop App) مستقل خلال ثوانٍ.
+- **النسخة:** Free Version
+
+---
+
+## 💻 تعليمات التثبيت والاستخدام (Installation Guide)
+
+1. قم بتحميل ملف البرنامج المعني بصيغة (`.exe` أو `.zip`).
+2. إذا كان الملف بصيغة `.zip`، قم بفك الضغط عنه باستخدام برنامج (WinRAR) أو (7-Zip).
+3. انقر مرتين على ملف التثبيت المرفق (`Setup.exe`).
+4. اتبع خطوات التثبيت البسيطة (التالي -> التالي -> إنهاء).
+5. ستجد اختصار البرنامج (Shortcut) على سطح المكتب وجاهزاً للعمل!
+
+> **ملاحظة:** جميع البرامج مصممة لتعمل بسلاسة على أنظمة ويندوز (Windows 10 و Windows 11).
+
+---
+
+## 📞 الدعم الفني وحقوق النشر (Support & Copyright)
+
+- **المطور:** حكيم بوزورداز (Hakim BOUZOURDAZ)
+- **حقوق النشر:** © 2026 جميع الحقوق محفوظة للمطور.
+- يمنع التعديل على ملفات البرامج أو إعادة بيعها دون إذن مسبق.
+
+*نشكرك على ثقتك في منظومة برامج حكيم. نتمنى لك تجربة استخدام ممتعة ومفيدة!*
