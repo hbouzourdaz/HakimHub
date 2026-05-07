@@ -22,6 +22,7 @@
             --md-sys-color-on-secondary-container: #101c2b;
             
             --md-sys-color-surface: #fdfcff;
+            --md-sys-color-surface-glass: rgba(253, 252, 255, 0.85);
             --md-sys-color-on-surface: #1a1c1e;
             --md-sys-color-on-surface-variant: #43474e;
             
@@ -49,6 +50,7 @@
             --md-sys-color-on-secondary-container: #d7e3f7;
             
             --md-sys-color-surface: #1a1c1e;
+            --md-sys-color-surface-glass: rgba(26, 28, 30, 0.85);
             --md-sys-color-on-surface: #e2e2e6;
             --md-sys-color-on-surface-variant: #c3c7cf;
             
@@ -73,9 +75,22 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* LTR adjustments */
         html[dir="ltr"] .title-text { margin-right: 0; margin-left: 8px; }
-        html[dir="ltr"] .search-container { transform-origin: top left; }
+
+        /* Custom Webkit Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--md-sys-color-surface);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-outline-variant);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--md-sys-color-outline);
+        }
 
         body {
             background-color: var(--md-sys-color-surface);
@@ -95,23 +110,46 @@
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        /* ===== M3 TOP APP BAR ===== */
+        /* ===== RIPPLE EFFECT ===== */
+        .ripple-surface {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-anim 0.6s linear;
+            background-color: var(--md-sys-color-on-surface);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        @keyframes ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* ===== STICKY HEADER (Glassmorphism) ===== */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--md-sys-color-surface-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-bottom-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sticky-header.scrolled {
+            border-bottom-color: var(--md-sys-color-outline-variant);
+            box-shadow: var(--md-elevation-1);
+        }
+
         .top-app-bar {
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
             height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .top-app-bar.scrolled {
-            background-color: var(--md-sys-color-surface-container-high);
-            box-shadow: var(--md-elevation-2);
         }
 
         .app-bar-start, .app-bar-end {
@@ -131,10 +169,15 @@
             justify-content: center;
             color: var(--md-sys-color-on-surface-variant);
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
         .icon-button:hover {
             background-color: var(--md-sys-color-surface-container-highest);
+            color: var(--md-sys-color-on-surface);
+        }
+        .icon-button.active {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
         }
 
         .title-text {
@@ -148,64 +191,19 @@
             text-decoration: none;
         }
 
-        /* ===== M3 MAIN LAYOUT ===== */
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 16px;
-            width: 100%;
-            flex: 1;
-        }
-
-        /* ===== M3 SEARCH BAR ===== */
-        .search-container {
-            display: none;
-            margin-bottom: 24px;
-            animation: expandSearch 0.3s cubic-bezier(0.2, 0, 0, 1) forwards;
-            transform-origin: top;
-        }
-        .search-container.active {
-            display: block;
-        }
-        @keyframes expandSearch {
-            from { opacity: 0; transform: scaleY(0); }
-            to { opacity: 1; transform: scaleY(1); }
-        }
-
-        .search-bar {
+        /* ===== M3 FILTER CHIPS (TABS) inside Sticky Header ===== */
+        .chip-group-container {
+            padding: 0 16px 12px 16px;
             display: flex;
-            align-items: center;
-            background-color: var(--md-sys-color-surface-container-high);
-            border-radius: 28px;
-            height: 56px;
-            padding: 0 16px;
-            gap: 16px;
-            transition: background-color 0.2s ease;
+            justify-content: center;
         }
-        .search-bar:focus-within {
-            background-color: var(--md-sys-color-surface-container-highest);
-        }
-        .search-bar input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: var(--md-sys-color-on-surface);
-            font-family: inherit;
-        }
-        .search-bar input::placeholder {
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        /* ===== M3 FILTER CHIPS (TABS) ===== */
         .chip-group {
             display: flex;
             gap: 8px;
             overflow-x: auto;
-            padding-bottom: 8px;
-            margin-bottom: 24px;
             scrollbar-width: none;
+            max-width: 1200px;
+            width: 100%;
         }
         .chip-group::-webkit-scrollbar { display: none; }
 
@@ -215,9 +213,9 @@
             gap: 8px;
             height: 36px;
             padding: 0 16px;
-            border-radius: 8px;
+            border-radius: 18px; /* M3 Pill shape */
             border: 1px solid var(--md-sys-color-outline-variant);
-            background: var(--md-sys-color-surface-container-lowest);
+            background: transparent;
             color: var(--md-sys-color-on-surface-variant);
             font-size: 14px;
             font-weight: 500;
@@ -227,10 +225,11 @@
         }
         .filter-chip:hover {
             background-color: var(--md-sys-color-surface-container-high);
+            color: var(--md-sys-color-on-surface);
         }
         .filter-chip.active {
-            background-color: var(--md-sys-color-secondary-container);
-            color: var(--md-sys-color-on-secondary-container);
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
             border-color: transparent;
         }
         .chip-icon {
@@ -241,11 +240,111 @@
             display: block;
         }
 
+        /* ===== M3 MAIN LAYOUT ===== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* ===== HERO SECTION & SEARCH ===== */
+        .hero-section {
+            text-align: center;
+            padding: 40px 16px 56px 16px;
+            background: radial-gradient(circle at top, var(--md-sys-color-surface-container-low), transparent 70%);
+            border-radius: 32px;
+            margin-bottom: 32px;
+            animation: fadeInDown 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero-search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--md-sys-color-surface-container-highest);
+            border-radius: 28px;
+            height: 56px;
+            padding: 0 20px;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--md-elevation-1);
+            transition: box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .hero-search-bar:focus-within {
+            background-color: var(--md-sys-color-surface);
+            box-shadow: var(--md-elevation-2);
+        }
+        .hero-search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: var(--md-sys-color-on-surface);
+            font-family: inherit;
+        }
+        .hero-search-bar input::placeholder {
+            color: var(--md-sys-color-outline);
+        }
+        .hero-search-bar .material-symbols-rounded {
+            color: var(--md-sys-color-primary);
+        }
+
+        /* ===== VIEW CONTROLS ===== */
+        .view-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .results-count {
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 500;
+        }
+        .toggle-group {
+            display: flex;
+            background: var(--md-sys-color-surface-container-high);
+            border-radius: 24px;
+            padding: 4px;
+        }
+        .toggle-group .icon-button {
+            width: 40px; height: 40px;
+        }
+
         /* ===== M3 ENHANCED CARDS ===== */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 16px;
+        }
+        .list-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .m3-card {
@@ -257,29 +356,35 @@
             padding: 16px;
             gap: 16px;
             cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
             text-decoration: none;
             color: inherit;
-            position: relative;
-            overflow: hidden;
             border: 1px solid var(--md-sys-color-outline-variant);
+            
+            /* Staggered Animation initial state */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
+            
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .m3-card:hover {
             background-color: var(--md-sys-color-surface-container-high);
             box-shadow: var(--md-elevation-1);
             border-color: var(--md-sys-color-outline);
-            transform: translateY(-2px);
         }
-        .m3-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-color: var(--md-sys-color-on-surface);
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
+
+        /* List layout specific card adjustments */
+        .list-layout .m3-card {
+            padding: 12px 16px;
+            border-radius: 12px;
         }
-        .m3-card:active::after { opacity: 0.1; }
+        .list-layout .card-thumbnail {
+            width: 56px; height: 56px; padding: 8px;
+        }
 
         .card-thumbnail {
             width: 72px;
@@ -289,7 +394,6 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            overflow: hidden;
             position: relative;
             padding: 12px;
             transition: transform 0.3s ease;
@@ -325,7 +429,22 @@
             flex: 1;
             min-width: 0;
             gap: 6px;
+            pointer-events: none; /* Let ripple show through text */
         }
+        .list-layout .card-content {
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .card-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
+        }
+
         .card-title {
             font-size: 16px;
             font-weight: 600;
@@ -372,9 +491,7 @@
             color: var(--md-sys-color-on-surface-variant);
             transition: all 0.2s;
             flex-shrink: 0;
-        }
-        .card-action span {
-            font-size: 20px;
+            pointer-events: none;
         }
         .m3-card:hover .card-action {
             background-color: var(--md-sys-color-primary);
@@ -385,10 +502,14 @@
         /* ===== M3 DETAIL VIEW ===== */
         #detailView {
             display: none;
-            animation: fadeTransition 0.3s ease;
+            animation: fadeTransition 0.4s cubic-bezier(0.2, 0, 0, 1);
         }
         #detailView.active {
             display: block;
+        }
+        @keyframes fadeTransition {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .m3-fab-extended {
@@ -587,11 +708,59 @@
         .m3-footer {
             background-color: var(--md-sys-color-surface-container-low);
             color: var(--md-sys-color-on-surface-variant);
-            padding: 24px 16px;
+            padding: 32px 16px;
             text-align: center;
             font-size: 14px;
             border-top: 1px solid var(--md-sys-color-outline-variant);
             margin-top: auto;
+        }
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .footer-socials a {
+            color: var(--md-sys-color-on-surface-variant);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--md-sys-color-surface-container-high);
+            transition: all 0.2s;
+        }
+        .footer-socials a:hover {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SNACKBAR / TOAST ===== */
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--md-sys-color-on-surface);
+            color: var(--md-sys-color-surface);
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 15px;
+            box-shadow: var(--md-elevation-2);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+        #snackbar.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
         }
 
         @media(max-width: 768px) {
@@ -604,52 +773,75 @@
             .detail-stats-row {
                 justify-content: center;
             }
+            .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .list-layout .card-content { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .list-layout .card-subtitle { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- M3 Top App Bar -->
-    <header class="top-app-bar" id="topAppBar">
-        <div class="app-bar-start">
-            <button class="icon-button" onclick="showHome()"><span class="material-symbols-rounded">menu</span></button>
-            <a href="#" class="title-text" onclick="showHome(); return false;">
-                <span class="material-symbols-rounded icon-filled" style="color: var(--md-sys-color-primary);">category</span>
-                <span data-i18n="appTitle">مكتبة البرامج</span>
-            </a>
+    <!-- Sticky Header (Glassmorphism) -->
+    <div class="sticky-header" id="stickyHeader">
+        <!-- M3 Top App Bar -->
+        <header class="top-app-bar">
+            <div class="app-bar-start">
+                <button class="icon-button ripple-surface" onclick="showHome()"><span class="material-symbols-rounded">menu</span></button>
+                <a href="#" class="title-text" onclick="showHome(); return false;">
+                    <span class="material-symbols-rounded icon-filled" style="color: var(--md-sys-color-primary);">category</span>
+                    <span data-i18n="appTitle">مكتبة البرامج</span>
+                </a>
+            </div>
+            <div class="app-bar-end">
+                <button class="icon-button ripple-surface" onclick="toggleLanguage()" title="تغيير اللغة / Change Language"><span class="material-symbols-rounded">translate</span></button>
+                <button class="icon-button ripple-surface" onclick="toggleTheme()" title="Dark/Light"><span class="material-symbols-rounded" id="themeIcon">dark_mode</span></button>
+            </div>
+        </header>
+
+        <!-- M3 Filter Chips -->
+        <div class="chip-group-container" id="filterTabsContainer">
+            <div class="chip-group" id="filterTabs"></div>
         </div>
-        <div class="app-bar-end">
-            <button class="icon-button" onclick="toggleSearch()" title="Search/بحث"><span class="material-symbols-rounded">search</span></button>
-            <button class="icon-button" onclick="toggleLanguage()" title="تغيير اللغة / Change Language"><span class="material-symbols-rounded">translate</span></button>
-            <button class="icon-button" onclick="toggleTheme()" title="Dark/Light"><span class="material-symbols-rounded" id="themeIcon">dark_mode</span></button>
-        </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
         
-        <!-- M3 Search Bar -->
-        <div class="search-container" id="searchContainer">
-            <div class="search-bar">
-                <span class="material-symbols-rounded" style="color: var(--md-sys-color-on-surface-variant);">search</span>
-                <input type="text" id="searchInput" placeholder="ابحث في البرامج..." data-i18n-placeholder="searchPlaceholder" oninput="filterApps()">
-            </div>
-        </div>
-
         <!-- ============ HOME VIEW ============ -->
         <div id="homeView">
-            <!-- M3 Filter Chips -->
-            <div class="chip-group" id="filterTabs"></div>
+            
+            <!-- Hero Section & Search -->
+            <div class="hero-section">
+                <h2 class="hero-title" data-i18n="heroTitle">استكشف أفضل البرامج التعليمية</h2>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">منظومة برامج متكاملة لتسهيل الإدارة المدرسية والمسار التعليمي.</p>
+                <div class="hero-search-bar">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="text" id="searchInput" placeholder="ابحث في البرامج..." data-i18n-placeholder="searchPlaceholder" oninput="filterApps()">
+                </div>
+            </div>
 
-            <!-- Grid -->
+            <!-- View Controls -->
+            <div class="view-controls">
+                <span class="results-count" id="resultsCount"></span>
+                <div class="toggle-group">
+                    <button id="btnGrid" class="icon-button active ripple-surface" onclick="setViewMode('grid')"><span class="material-symbols-rounded">grid_view</span></button>
+                    <button id="btnList" class="icon-button ripple-surface" onclick="setViewMode('list')"><span class="material-symbols-rounded">view_list</span></button>
+                </div>
+            </div>
+
+            <!-- Apps Grid/List -->
             <div class="grid-layout" id="appsGrid"></div>
         </div>
 
         <!-- ============ DETAIL VIEW ============ -->
         <div id="detailView">
-            <div style="margin-bottom: 24px;">
-                <button class="icon-button" onclick="showHome()" style="background-color: var(--md-sys-color-surface-container-high); border-radius: 50%;">
+            <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+                <button class="icon-button ripple-surface" onclick="showHome()" style="background-color: var(--md-sys-color-surface-container-high); border-radius: 50%;">
                     <span class="material-symbols-rounded" id="backIcon">arrow_forward</span>
+                </button>
+                <button class="icon-button ripple-surface" onclick="shareApp()" title="Share / مشاركة" style="background-color: var(--md-sys-color-surface-container-high); border-radius: 50%;">
+                    <span class="material-symbols-rounded">share</span>
                 </button>
             </div>
 
@@ -688,7 +880,7 @@
                         </div>
                     </div>
                     
-                    <button class="m3-fab-extended" id="downloadBtn" onclick="downloadApp()">
+                    <button class="m3-fab-extended ripple-surface" id="downloadBtn" onclick="downloadApp()">
                         <span class="material-symbols-rounded icon-filled">download</span>
                         <span data-i18n="downloadBtn">تحميل النسخة الأخيرة</span>
                     </button>
@@ -742,12 +934,21 @@
     <footer class="m3-footer">
         <div class="footer-content">
             <span data-i18n="footerText">© 2026 مكتبة البرامج - جميع الحقوق محفوظة للمطور حكيم بوزورداز.</span>
+            <div class="footer-socials">
+                <a href="#" title="GitHub" class="ripple-surface"><span class="material-symbols-rounded">code</span></a>
+                <a href="#" title="Email" class="ripple-surface"><span class="material-symbols-rounded">mail</span></a>
+                <a href="#" title="Portfolio" class="ripple-surface"><span class="material-symbols-rounded">language</span></a>
+            </div>
         </div>
     </footer>
 
+    <!-- Snackbar (Toast) -->
+    <div id="snackbar"></div>
+
     <script>
         let currentApp = null;
-        let currentLang = 'ar'; // Default language
+        let currentLang = 'ar';
+        let currentViewMode = 'grid'; // 'grid' or 'list'
 
         const defaultIconSymbol = '<span class="material-symbols-rounded fallback-icon">apps</span>';
 
@@ -767,7 +968,12 @@
                 developerName: "Hakim BOUZOURDAZ",
                 downloadBtn: "تحميل النسخة الأخيرة",
                 backIcon: "arrow_forward",
-                footerText: "© 2026 مكتبة البرامج - جميع الحقوق محفوظة للمطور حكيم بوزورداز."
+                footerText: "© 2026 مكتبة البرامج - جميع الحقوق محفوظة للمطور حكيم بوزورداز.",
+                heroTitle: "استكشف أفضل البرامج التعليمية",
+                heroSubtitle: "منظومة برامج متكاملة لتسهيل الإدارة المدرسية والمسار التعليمي بأحدث التقنيات.",
+                resultsCountText: "{count} برامج",
+                linkCopied: "تم نسخ الرابط إلى الحافظة!",
+                downloadStarted: "بدأ تحميل البرنامج..."
             },
             en: {
                 appTitle: "Software Library",
@@ -784,33 +990,75 @@
                 developerName: "Hakim BOUZOURDAZ",
                 downloadBtn: "Download Latest Version",
                 backIcon: "arrow_back",
-                footerText: "© 2026 Software Library - All rights reserved by Hakim BOUZOURDAZ."
+                footerText: "© 2026 Software Library - All rights reserved by Hakim BOUZOURDAZ.",
+                heroTitle: "Explore Educational Software",
+                heroSubtitle: "An integrated software ecosystem to facilitate school administration and learning pathways.",
+                resultsCountText: "{count} Apps",
+                linkCopied: "Link copied to clipboard!",
+                downloadStarted: "Download started..."
             }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
             updateTranslations();
             renderTabs();
-            renderApps(appsData);
+            filterApps(); // Renders apps and sets count
+            setupRippleEffect();
             
-            // Top App Bar Scroll Effect
+            // Sticky Header Scroll Effect
             window.addEventListener('scroll', () => {
-                const appBar = document.getElementById('topAppBar');
+                const header = document.getElementById('stickyHeader');
                 if (window.scrollY > 10) {
-                    appBar.classList.add('scrolled');
+                    header.classList.add('scrolled');
                 } else {
-                    appBar.classList.remove('scrolled');
+                    header.classList.remove('scrolled');
                 }
             });
 
-            // Check Hash
+            // Check Hash for deep linking
             if(window.location.hash && window.location.hash.startsWith('#app-')) {
                 const id = parseInt(window.location.hash.replace('#app-', ''));
                 if(id) showDetail(id);
+            } else {
+                document.title = i18n[currentLang].appTitle + " - Hakim Ecosystem";
             }
         });
 
-        // --- Translation & Language Toggle ---
+        // --- Ripple Effect ---
+        function setupRippleEffect() {
+            document.body.addEventListener('mousedown', function(e) {
+                const target = e.target.closest('.ripple-surface');
+                if (!target) return;
+
+                const circle = document.createElement('span');
+                const diameter = Math.max(target.clientWidth, target.clientHeight);
+                const radius = diameter / 2;
+
+                const rect = target.getBoundingClientRect();
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${e.clientX - rect.left - radius}px`;
+                circle.style.top = `${e.clientY - rect.top - radius}px`;
+                circle.classList.add('ripple');
+
+                // Remove existing ripples
+                const existingRipple = target.querySelector('.ripple');
+                if (existingRipple) {
+                    existingRipple.remove();
+                }
+
+                target.appendChild(circle);
+            });
+        }
+
+        // --- Snackbar ---
+        function showToast(message) {
+            const snackbar = document.getElementById('snackbar');
+            snackbar.textContent = message;
+            snackbar.className = 'show';
+            setTimeout(() => { snackbar.className = snackbar.className.replace('show', ''); }, 3000);
+        }
+
+        // --- Translation ---
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
@@ -818,8 +1066,9 @@
             
             updateTranslations();
             renderTabs();
-            filterApps(); // Re-render grid to update text
-            if(currentApp) showDetail(currentApp.id); // Re-render detail if open
+            filterApps(); 
+            if(currentApp) showDetail(currentApp.id); 
+            else document.title = i18n[currentLang].appTitle + " - Hakim Ecosystem";
         }
 
         function updateTranslations() {
@@ -832,12 +1081,10 @@
                 const key = el.getAttribute('data-i18n-placeholder');
                 if (dict[key]) el.placeholder = dict[key];
             });
-            
-            // Update back icon direction
             document.getElementById('backIcon').textContent = dict.backIcon;
         }
 
-        // --- Theme Toggle ---
+        // --- Theme ---
         function toggleTheme() {
             const html = document.documentElement;
             const icon = document.getElementById('themeIcon');
@@ -850,22 +1097,35 @@
             }
         }
 
-        // --- Search Toggle ---
-        function toggleSearch() {
-            const container = document.getElementById('searchContainer');
-            container.classList.toggle('active');
-            if(container.classList.contains('active')) {
-                document.getElementById('searchInput').focus();
+        // --- View Mode (Grid/List) ---
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            const grid = document.getElementById('appsGrid');
+            if (mode === 'list') {
+                grid.classList.remove('grid-layout');
+                grid.classList.add('list-layout');
+                document.getElementById('btnList').classList.add('active');
+                document.getElementById('btnGrid').classList.remove('active');
+            } else {
+                grid.classList.remove('list-layout');
+                grid.classList.add('grid-layout');
+                document.getElementById('btnGrid').classList.add('active');
+                document.getElementById('btnList').classList.remove('active');
             }
         }
 
         // --- Tabs ---
         function renderTabs() {
             const tabsContainer = document.getElementById('filterTabs');
+            // Re-render keeping active state if possible
+            const activeTab = document.querySelector('.filter-chip.active');
+            const activeFilterEn = activeTab ? activeTab.dataset.filterValue : 'All';
+
             tabsContainer.innerHTML = categories.map((cat, i) => {
                 const catName = currentLang === 'ar' ? cat.ar : cat.en;
+                const isActive = cat.en === activeFilterEn ? 'active' : '';
                 return `
-                <button class="filter-chip ${i === 0 ? 'active' : ''}" onclick="setFilter('${catName}', this, '${cat.en}')">
+                <button class="filter-chip ${isActive} ripple-surface" onclick="setFilter('${catName}', this, '${cat.en}')">
                     <span class="material-symbols-rounded icon-filled chip-icon">check</span>
                     ${catName}
                 </button>
@@ -876,7 +1136,6 @@
         function setFilter(catName, btn, catEnOriginal) {
             document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            // Store the filter value
             btn.dataset.filterValue = catEnOriginal; 
             filterApps();
         }
@@ -884,8 +1143,6 @@
         function filterApps() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const activeTab = document.querySelector('.filter-chip.active');
-            
-            // We use English category as the base filter reference
             const filterValue = activeTab ? (activeTab.dataset.filterValue || 'All') : 'All';
 
             let filtered = appsData;
@@ -900,6 +1157,11 @@
                     (a.descriptionEn && a.descriptionEn.toLowerCase().includes(query))
                 );
             }
+            
+            // Update results count
+            const countText = i18n[currentLang].resultsCountText.replace('{count}', filtered.length);
+            document.getElementById('resultsCount').textContent = countText;
+
             renderApps(filtered);
         }
 
@@ -916,7 +1178,7 @@
                 return;
             }
 
-            grid.innerHTML = apps.map(app => {
+            grid.innerHTML = apps.map((app, index) => {
                 let iconContent = '';
                 if (app.icon && app.icon !== 'default') {
                     iconContent = `
@@ -929,15 +1191,19 @@
 
                 const title = currentLang === 'ar' ? app.nameAr : app.name;
                 const category = currentLang === 'ar' ? app.category : app.categoryEn;
+                // Add staggered delay based on index (max 0.5s so it doesn't take too long)
+                const delay = Math.min(index * 0.05, 0.5);
 
                 return `
-                    <div class="m3-card" onclick="showDetail(${app.id})">
+                    <div class="m3-card ripple-surface" onclick="showDetail(${app.id})" style="animation-delay: ${delay}s">
                         <div class="card-thumbnail" style="background: ${app.gradient}; box-shadow: 0 4px 12px ${app.color}40;">
                             ${iconContent}
                         </div>
                         <div class="card-content">
-                            <div class="card-title">${title}</div>
-                            <div class="card-badge">${category}</div>
+                            <div class="card-title-group">
+                                <div class="card-title">${title}</div>
+                                <div class="card-badge">${category}</div>
+                            </div>
                             <div class="card-subtitle">
                                 <span class="card-subtitle-item"><span class="material-symbols-rounded">download</span> ${(app.downloads / 1000).toFixed(1)}K</span>
                                 <span class="card-subtitle-item"><span class="material-symbols-rounded">folder</span> ${app.size}</span>
@@ -958,9 +1224,13 @@
             currentApp = app;
 
             document.getElementById('homeView').style.display = 'none';
+            document.getElementById('filterTabsContainer').style.display = 'none'; // Hide tabs in detail view
             document.getElementById('detailView').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.location.hash = `app-${id}`;
+
+            const title = currentLang === 'ar' ? app.nameAr : app.name;
+            document.title = title + " - Hakim Ecosystem";
 
             const detailIconBox = document.getElementById('detailIcon');
             detailIconBox.style.background = app.gradient;
@@ -977,7 +1247,6 @@
             }
             detailIconBox.innerHTML = iconHtml;
 
-            const title = currentLang === 'ar' ? app.nameAr : app.name;
             const category = currentLang === 'ar' ? app.category : app.categoryEn;
             const desc = currentLang === 'ar' ? app.description : app.descriptionEn;
             const features = currentLang === 'ar' ? app.features : app.featuresEn;
@@ -1006,17 +1275,29 @@
         function showHome() {
             document.getElementById('detailView').classList.remove('active');
             document.getElementById('homeView').style.display = 'block';
+            document.getElementById('filterTabsContainer').style.display = 'flex'; // Restore tabs
             window.location.hash = '';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.title = i18n[currentLang].appTitle + " - Hakim Ecosystem";
         }
 
-        // --- Download ---
+        // --- Actions ---
         function downloadApp() {
             if(!currentApp) return;
+            showToast(i18n[currentLang].downloadStarted);
             const link = document.createElement('a');
             link.href = '../' + currentApp.fileName;
             link.download = currentApp.fileName;
             link.click();
+        }
+
+        function shareApp() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast(i18n[currentLang].linkCopied);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
 
         // Handle back button
